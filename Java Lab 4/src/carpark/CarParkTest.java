@@ -105,7 +105,6 @@ public class CarParkTest {
 	/**
 	 * @Test the method parkCar(String, int). 
 	 */
-	@Ignore
 	@Test
 	public void testParkCar() {
 		CarPark park = new CarPark(6);

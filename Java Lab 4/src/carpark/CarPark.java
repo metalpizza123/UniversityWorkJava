@@ -13,7 +13,6 @@ public class CarPark {
 	
 	public CarPark(int size){
 		if (size<1){
-			System.out.println("Size too small");
 			//THROW?? wtf?
 			throw new IllegalArgumentException();
 			//like this?
@@ -41,11 +40,29 @@ public class CarPark {
 	}
 	
 	public int getCarPosition(String numberPlate){
+		for(int pos = 0; pos < spaces.length; pos++){
+			if (numberPlate.equals(spaces[pos])){
+				return pos;
+			}
+		}
 		return -1;
 	}
 	
 	public int parkCar(String numberPlate, int size){
-		return -1;
+		if (getCarPosition(numberPlate)>=0) {
+			return -1;
+		}
+		int position = 0;
+		while(position + size -1 < spaces.length){
+			if(getAvailableSpaces(position) >= size){
+				for(int i = 0; i < size; i++){
+					spaces[position+i] = numberPlate;
+				}
+				return position;
+			}
+			position++;
+		}
+		return -1;		
 	}
 		
 	public boolean removeCar(String numberPlate){
